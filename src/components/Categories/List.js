@@ -7,8 +7,10 @@ const CategoriesList = (props) => {
     return (
       <CategoriesItem 
         key={index}
+        index={index}
         title={category.title}
-        moneySum={category.moneySum} />
+        moneySum={category.moneySum} 
+        updateCategory={props.updateCategory} />
     )
   });
 
