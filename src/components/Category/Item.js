@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CategoryForm from '../Category/Form';
 
 class CategoryItem extends Component {
   constructor(props) {
