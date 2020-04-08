@@ -7,37 +7,52 @@ class CategoryItem extends Component {
 
     this.state = {
       index: this.props.index,
-      moneySum: this.props.moneySum
+      title: this.props.title,
+      moneySum: this.props.moneySum,
+      isEdit: false
     };
   }
 
-  handleChange = (evt) => {
+  toggleEditForm = () => {
     this.setState({
-      moneySum: Number(evt.target.value)
+      isEdit: !this.state.isEdit
     });
   }
 
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-
-    this.props.updateCategory(this.state);
+  handleSubmit = (newCategory) => {
+    this.setState(newCategory);
+    this.props.updateCategory({...newCategory, index: this.state.index});
+    this.toggleEditForm();
   }
 
   render() {
-    const {title} = this.props;
+    const {title, moneySum} = this.state;
+
+    if (this.state.isEdit) {
+      return (
+        <li className="categories-item">
+          <CategoryForm 
+            title={title}
+            moneySum={moneySum}
+            handleSubmit={this.handleSubmit} />
+          <button 
+            type="button"
+            onClick={this.toggleEditForm}>
+            Cancel Edit
+          </button>
+        </li>
+      );
+    }
 
     return (
       <li className="categories-item">
         <h3>{title}</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="text" 
-            value={this.state.moneySum}
-            onChange={this.handleChange} />
-          <button type="submit">
-            Save
-          </button>
-        </form>
+        <p>{moneySum}</p>
+        <button 
+          type="button"
+          onClick={this.toggleEditForm}>
+          Edit
+        </button>
       </li>
     );
   }

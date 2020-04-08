@@ -33,7 +33,7 @@ class App extends Component {
   updateCategory = (category) => {
     const categories = [...this.state.categories];
 
-    categories[category.index] = {...categories[category.index], moneySum: category.moneySum};
+    categories[category.index] = {...categories[category.index], ...category};
 
     this.setState({
       categories: categories
