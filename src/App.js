@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Total from './components/Total/Total';
 import CategoryList from './components/Category/List';
-import CategoryAddForm from './components/Category/AddForm';
+import CategoryAdd from './components/Category/Add';
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class App extends Component {
         <CategoryList 
           categoriesData={this.state.categories} 
           updateCategory={this.updateCategory} />
-        <CategoryAddForm 
+        <CategoryAdd 
           isCategoryAdd={this.state.isCategoryAdd} 
           toggleCategoriesAddForm={this.toggleCategoryAddForm} 
           addCategory={this.addCategory} />
