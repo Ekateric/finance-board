@@ -73,7 +73,7 @@ class AddForm extends Component {
   }
 }
 
-class CategoriesAddForm extends Component {
+class CategoryAddForm extends Component {
   handleClick = (evt) => {
     evt.preventDefault();
     this.props.toggleCategoriesAddForm();
@@ -97,4 +97,4 @@ class CategoriesAddForm extends Component {
   }
 }
 
-export default CategoriesAddForm;
+export default CategoryAddForm;

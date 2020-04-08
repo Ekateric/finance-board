@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Total from './components/Total/Total';
-import CategoriesList from './components/Categories/List';
-import CategoriesAddForm from './components/Categories/AddForm';
+import CategoryList from './components/Category/List';
+import CategoryAddForm from './components/Category/AddForm';
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class App extends Component {
     }, 0);
   }
 
-  toggleCategoriesAddForm = () => {
+  toggleCategoryAddForm = () => {
     this.setState({
       isCategoryAdd: !this.state.isCategoryAdd
     });
@@ -63,12 +63,12 @@ class App extends Component {
     return (
       <div className="finance-board">
         <Total sum={this.countSum()} />
-        <CategoriesList 
+        <CategoryList 
           categoriesData={this.state.categories} 
           updateCategory={this.updateCategory} />
-        <CategoriesAddForm 
+        <CategoryAddForm 
           isCategoryAdd={this.state.isCategoryAdd} 
-          toggleCategoriesAddForm={this.toggleCategoriesAddForm} 
+          toggleCategoriesAddForm={this.toggleCategoryAddForm} 
           addCategory={this.addCategory} />
       </div>
     )

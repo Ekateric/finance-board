@@ -1,11 +1,11 @@
 import React from 'react';
-import CategoriesItem from './Item';
+import CategoryItem from './Item';
 import './List.scss';
 
-const CategoriesList = (props) => {
+const CategoryList = (props) => {
   const items = props.categoriesData.map((category, index) => {
     return (
-      <CategoriesItem 
+      <CategoryItem 
         key={index}
         index={index}
         title={category.title}
@@ -17,4 +17,4 @@ const CategoriesList = (props) => {
   return <ul className="categories-list">{items}</ul>
 }
 
-export default CategoriesList;
+export default CategoryList;
