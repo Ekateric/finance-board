@@ -10,7 +10,8 @@ const CategoryList = (props) => {
         index={index}
         title={category.title}
         moneySum={category.moneySum} 
-        updateCategory={props.updateCategory} />
+        updateCategory={props.updateCategory}
+        deleteCategory={props.deleteCategory} />
     )
   });
 

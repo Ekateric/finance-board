@@ -26,7 +26,8 @@ class CategoryItem extends Component {
   }
 
   render() {
-    const {title, moneySum} = this.state;
+    const {index, title, moneySum} = this.state;
+    const {deleteCategory} = this.props;
 
     if (this.state.isEdit) {
       return (
@@ -52,6 +53,11 @@ class CategoryItem extends Component {
           type="button"
           onClick={this.toggleEditForm}>
           Edit
+        </button>
+        <button 
+          type="button"
+          onClick={() => deleteCategory(index)}>
+          Delete
         </button>
       </li>
     );

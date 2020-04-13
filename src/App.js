@@ -46,6 +46,16 @@ class App extends Component {
     });
   }
 
+  deleteCategory = (categoryIndex) => {
+    const categories = [...this.state.categories];
+
+    this.setState({
+      categories: categories.filter((category, index) => {
+        return index !== categoryIndex;
+      })
+    });
+  }
+
   countSum = () => {
     return this.state.categories.reduce((sum, category) => {
       return sum + category.moneySum
@@ -65,7 +75,8 @@ class App extends Component {
         <Total sum={this.countSum()} />
         <CategoryList 
           categoriesData={this.state.categories} 
-          updateCategory={this.updateCategory} />
+          updateCategory={this.updateCategory}
+          deleteCategory={this.deleteCategory} />
         <CategoryAdd 
           isCategoryAdd={this.state.isCategoryAdd} 
           toggleCategoriesAddForm={this.toggleCategoryAddForm} 
