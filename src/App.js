@@ -58,7 +58,7 @@ class App extends Component {
 
   countSum = () => {
     return this.state.categories.reduce((sum, category) => {
-      return sum + category.moneySum
+      return sum + Number(category.moneySum)
     }, 0);
   }
 
