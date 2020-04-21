@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Total from './components/Total/Total';
 import CategoryList from './components/Category/List';
 import CategoryAdd from './components/Category/Add';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {

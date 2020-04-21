@@ -7,8 +7,8 @@ class Total extends Component {
 
     return (
       <div className="total">
-        <h2>Total</h2>
-        <div>{sum}</div>
+        <h2 className="total__title">Total:</h2>
+        <div className="total__sum">{sum}</div>
       </div>
     );
   }
