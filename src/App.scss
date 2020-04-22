@@ -1,4 +1,8 @@
 .finance-board {
-  width: 980px;
-  margin: 0 auto;  
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media all and (min-width: 1000px) {
+    width: 960px;
+  }
 }

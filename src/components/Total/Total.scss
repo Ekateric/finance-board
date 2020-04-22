@@ -1,10 +1,12 @@
+@import '../../assets/styles/variables.scss';
+
 .total {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
-  border-bottom: 2px solid #b4b5cc;
-  color: #11133a;
+  border-bottom: 2px solid $border-color;
+  color: $font-title-color;
 }
 
 .total__title {
@@ -19,6 +21,6 @@
   font-weight: bold;
 
   &_negative {
-    color: #db6c59;
+    color: $font-error-color;
   }
 }
