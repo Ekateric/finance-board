@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+
+.category-item {
+  box-sizing: border-box;
+  width: 20%;
+  min-width: 120px;
+  margin: 0 0 35px;
+  word-wrap: break-word;
+
+  &__title{
+    margin: 0 10% 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $border-color;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  &__body {
+    margin-right: 10%;
+
+    p {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-@import '../../assets/styles/variables.scss';
+@import '../../assets/styles/variables';
 
 .total {
   display: flex;
@@ -7,20 +7,20 @@
   padding: 15px 0;
   border-bottom: 2px solid $border-color;
   color: $font-title-color;
-}
 
-.total__title {
-  margin: 0;
-  font-size: 25px;
-  line-height: 1.1;
-}
+  &__title {
+    margin: 0;
+    font-size: 25px;
+    line-height: 1.1;
+  }
 
-.total__sum {
-  font-size: 25px;
-  line-height: 1.1;
-  font-weight: bold;
-
-  &_negative {
-    color: $font-error-color;
+  &__sum {
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: bold;
+  
+    &_negative {
+      color: $font-error-color;
+    }
   }
 }

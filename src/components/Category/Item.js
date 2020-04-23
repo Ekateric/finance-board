@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CategoryForm from '../Category/Form';
+import './Item.scss';
 
 class CategoryItem extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CategoryItem extends Component {
 
     if (this.state.isEdit) {
       return (
-        <li className="categories-item">
+        <li className="category-item">
           <CategoryForm 
             title={title}
             moneySum={moneySum}
@@ -46,19 +47,21 @@ class CategoryItem extends Component {
     }
 
     return (
-      <li className="categories-item">
-        <h3>{title}</h3>
-        <p>{moneySum}</p>
-        <button 
-          type="button"
-          onClick={this.toggleEditForm}>
-          Edit
-        </button>
-        <button 
-          type="button"
-          onClick={() => deleteCategory(index)}>
-          Delete
-        </button>
+      <li className="category-item">
+        <h3 className="category-item__title">{title}</h3>
+        <div className="category-item__body">  
+          <p>{moneySum}</p>
+          <button 
+            type="button"
+            onClick={this.toggleEditForm}>
+            Edit
+          </button>
+          <button 
+            type="button"
+            onClick={() => deleteCategory(index)}>
+            Delete
+          </button>
+        </div>
       </li>
     );
   }
