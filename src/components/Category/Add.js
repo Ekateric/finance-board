@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CategoryForm from './Form';
+import Button from '../../UI/Button';
 
 const CategoryAddButton = (props) => {
   return (
@@ -30,11 +31,10 @@ class CategoryAdd extends Component {
         <div>
           <CategoryForm 
             handleSubmit={this.handleSubmit} />
-          <button 
-            type="button"
-            onClick={this.handleClick}>
-            Cancel
-          </button>
+          <Button
+            title='Cancel'
+            subClass='warn'
+            handleClick={this.handleClick} />
         </div>
       );
     }
