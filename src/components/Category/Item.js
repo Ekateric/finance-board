@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '../../UI/Button';
 import CategoryForm from '../Category/Form';
 import './Item.scss';
 
@@ -37,11 +38,10 @@ class CategoryItem extends Component {
             title={title}
             moneySum={moneySum}
             handleSubmit={this.handleSubmit} />
-          <button 
-            type="button"
-            onClick={this.toggleEditForm}>
-            Cancel Edit
-          </button>
+          <Button 
+            title="Cancel Edit"
+            subClass="warn"
+            handleClick={this.toggleEditForm} />
         </li>
       );
     }
@@ -51,16 +51,13 @@ class CategoryItem extends Component {
         <h3 className="category-item__title">{title}</h3>
         <div className="category-item__body">  
           <p>{moneySum}</p>
-          <button 
-            type="button"
-            onClick={this.toggleEditForm}>
-            Edit
-          </button>
-          <button 
-            type="button"
-            onClick={() => deleteCategory(index)}>
-            Delete
-          </button>
+          <Button
+            title="Edit"
+            handleClick={this.toggleEditForm} />
+          <Button
+            title="Delete"
+            subClass="err"
+            handleClick={() => deleteCategory(index)} />
         </div>
       </li>
     );

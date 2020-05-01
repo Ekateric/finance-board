@@ -4,11 +4,9 @@ import Button from '../../UI/Button';
 
 const CategoryAddButton = (props) => {
   return (
-    <button 
-      type="button" 
-      onClick={props.handleClick}>
-      Add new category
-    </button>
+    <Button
+      title="Add new category"
+      handleClick={props.handleClick} />
   )
 }
 

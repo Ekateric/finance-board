@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Button from '../../UI/Button';
 
 const errorText = {
   TITLE: 'There should be a title',
@@ -126,11 +127,10 @@ class CategoryForm extends Component {
           name="moneySum"
           value={moneySum}
           onChange={this.handleChange} />
-        <button 
-          type="submit" 
-          disabled={!validation.form.isValid} >
-          Save
-        </button>
+        <Button
+          title="Save"
+          type="submit"
+          disabled={!validation.form.isValid} />
       </form>
     );
   }

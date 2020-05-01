@@ -8,11 +8,13 @@ const Button = (props) => {
   const type = props.type || DEFAULT_TYPE;
   const title = props.title;
   const className = getClassString(DEFAULT_CLASS_NAME, props.subClass);
+  const disabled = !!props.disabled
 
   return (
     <button
       type={type}
       className={className}
+      disabled={disabled}
       onClick={props.handleClick}>
       {title}
     </button>
