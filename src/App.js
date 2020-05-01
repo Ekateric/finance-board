@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Categories} from './data';
 import Total from './components/Total/Total';
 import CategoryList from './components/Category/List';
 import CategoryAdd from './components/Category/Add';
@@ -9,32 +10,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      categories: [
-        {
-          title: 'Common',
-          moneySum: 1200,
-        },
-        {
-          title: 'Child',
-          moneySum: 300,
-        },
-        {
-          title: 'My own',
-          moneySum: 120,
-        },
-        {
-          title: 'Flat',
-          moneySum: 200,
-        }
-      ],
+      categories: [...Categories],
+      nextId: Categories.length,
       isCategoryAdd: false
     };
   }
 
   updateCategory = (category) => {
     const categories = [...this.state.categories];
+    const categoryIndex = categories.findIndex((item) => item.id === category.id);
 
-    categories[category.index] = {...categories[category.index], ...category};
+    categories[categoryIndex] = {...categories[categoryIndex], ...category};
 
     this.setState({
       categories: categories
@@ -42,18 +28,23 @@ class App extends Component {
   }
 
   addCategory = (category) => {
+    category.id = this.state.nextId;
+
     this.setState({
-      categories: [...this.state.categories, category]
+      categories: [...this.state.categories, category],
+      nextId: this.state.nextId + 1
     });
   }
 
-  deleteCategory = (categoryIndex) => {
-    const categories = [...this.state.categories];
+  deleteCategory = (categoryId) => {
+    let categories = [...this.state.categories];
+
+    categories = categories.filter((category) => {
+      return category.id !== categoryId;
+    });
 
     this.setState({
-      categories: categories.filter((category, index) => {
-        return index !== categoryIndex;
-      })
+      categories: categories
     });
   }
 

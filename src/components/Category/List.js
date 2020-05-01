@@ -3,11 +3,11 @@ import CategoryItem from './Item';
 import './List.scss';
 
 const CategoryList = (props) => {
-  const items = props.categoriesData.map((category, index) => {
+  const items = props.categoriesData.map((category) => {
     return (
       <CategoryItem 
-        key={index}
-        index={index}
+        key={category.id.toString()}
+        id={category.id}
         title={category.title}
         moneySum={category.moneySum} 
         updateCategory={props.updateCategory}

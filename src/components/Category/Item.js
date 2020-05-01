@@ -8,7 +8,7 @@ class CategoryItem extends Component {
     super(props);
 
     this.state = {
-      index: this.props.index,
+      id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
       isEdit: false
@@ -23,12 +23,12 @@ class CategoryItem extends Component {
 
   handleSubmit = (newCategory) => {
     this.setState(newCategory);
-    this.props.updateCategory({...newCategory, index: this.state.index});
+    this.props.updateCategory({...newCategory, id: this.state.id});
     this.toggleEditForm();
   }
 
   render() {
-    const {index, title, moneySum} = this.state;
+    const {id, title, moneySum} = this.state;
     const {deleteCategory} = this.props;
 
     if (this.state.isEdit) {
@@ -57,7 +57,7 @@ class CategoryItem extends Component {
           <Button
             title="Delete"
             subClass="err"
-            handleClick={() => deleteCategory(index)} />
+            handleClick={() => deleteCategory(id)} />
         </div>
       </li>
     );

@@ -102,7 +102,10 @@ class CategoryForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
 
-    this.props.handleSubmit(this.state);
+    this.props.handleSubmit({
+      title: this.state.title,
+      moneySum: this.state.moneySum
+    });
     this.setState(this.initialState);
   }
 
