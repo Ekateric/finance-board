@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       categories: [...Categories],
-      nextId: Categories.length,
+      nextCategoryId: Categories.length,
       isCategoryAdd: false
     };
   }
@@ -28,11 +28,11 @@ class App extends Component {
   }
 
   addCategory = (category) => {
-    category.id = this.state.nextId;
+    category.id = this.state.nextCategoryId;
 
     this.setState({
       categories: [...this.state.categories, category],
-      nextId: this.state.nextId + 1
+      nextCategoryId: this.state.nextCategoryId + 1
     });
   }
 
