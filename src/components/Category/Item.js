@@ -37,11 +37,8 @@ class CategoryItem extends Component {
           <CategoryForm 
             title={title}
             moneySum={moneySum}
-            handleSubmit={this.handleSubmit} />
-          <Button 
-            title="Cancel Edit"
-            subClass="warn"
-            handleClick={this.toggleEditForm} />
+            handleSubmit={this.handleSubmit}
+            handleCancelClick={this.toggleEditForm} />
         </li>
       );
     }

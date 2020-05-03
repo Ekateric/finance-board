@@ -115,9 +115,12 @@ class CategoryForm extends Component {
 
   render() {
     const {title, moneySum, validation} = this.state;
+    const {handleCancelClick} = this.props;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        className="category-form"
+        onSubmit={this.handleSubmit}>
         <input 
           type="text" 
           placeholder="Enter title" 
@@ -133,7 +136,12 @@ class CategoryForm extends Component {
         <Button
           title="Save"
           type="submit"
+          subClass="info"
           disabled={!validation.form.isValid} />
+        <Button
+          title="Cancel"
+          subClass="warn"
+          handleClick={(evt) => handleCancelClick(evt)} />
       </form>
     );
   }

@@ -6,6 +6,7 @@ const CategoryAddButton = (props) => {
   return (
     <Button
       title="Add new category"
+      subClass={["huge", "info"]}
       handleClick={props.handleClick} />
   )
 }
@@ -25,16 +26,10 @@ class CategoryAdd extends Component {
     const {isCategoryAdd} = this.props;
 
     if (isCategoryAdd) {
-      return (
-        <div>
-          <CategoryForm 
-            handleSubmit={this.handleSubmit} />
-          <Button
-            title='Cancel'
-            subClass='warn'
-            handleClick={this.handleClick} />
-        </div>
-      );
+      return <CategoryForm 
+        handleSubmit={this.handleSubmit}
+        handleCancelClick={this.handleClick} />;
+     
     }
 
     return <CategoryAddButton handleClick={this.handleClick} />;

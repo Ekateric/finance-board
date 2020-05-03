@@ -1,5 +1,6 @@
 import React from 'react';
 import {getClassString} from '../assets/js';
+import './Button.scss';
 
 const DEFAULT_CLASS_NAME = 'btn';
 const DEFAULT_TYPE = 'button';
