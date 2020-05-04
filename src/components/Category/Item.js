@@ -28,34 +28,33 @@ class CategoryItem extends Component {
   }
 
   render() {
-    const {id, title, moneySum} = this.state;
+    const {id, title, moneySum, isEdit} = this.state;
     const {deleteCategory} = this.props;
-
-    if (this.state.isEdit) {
-      return (
-        <li className="category-item">
-          <CategoryForm 
-            title={title}
-            moneySum={moneySum}
-            handleSubmit={this.handleSubmit}
-            handleCancelClick={this.toggleEditForm} />
-        </li>
-      );
-    }
 
     return (
       <li className="category-item">
         <h3 className="category-item__title">{title}</h3>
-        <div className="category-item__body">  
-          <p>{moneySum}</p>
-          <Button
-            title="Edit"
-            handleClick={this.toggleEditForm} />
-          <Button
-            title="Delete"
-            subClass="err"
-            handleClick={() => deleteCategory(id)} />
-        </div>
+        
+          {isEdit
+          ? <div className="category-item__body">
+              <p>Changing category:</p>
+              <CategoryForm 
+                title={title}
+                moneySum={moneySum}
+                handleSubmit={this.handleSubmit}
+                handleCancelClick={this.toggleEditForm} />
+            </div>
+          : <div className="category-item__body">
+              <p>{moneySum}</p>
+              <Button
+                title="Edit"
+                handleClick={this.toggleEditForm} />
+              <Button
+                title="Delete"
+                subClass="err"
+                handleClick={() => deleteCategory(id)} />
+            </div>
+          }
       </li>
     );
   }
