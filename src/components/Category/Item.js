@@ -39,6 +39,7 @@ class CategoryItem extends Component {
           ? <div className="category-item__body">
               <p>Changing category:</p>
               <CategoryForm 
+                id={id}
                 title={title}
                 moneySum={moneySum}
                 handleSubmit={this.handleSubmit}

@@ -9,14 +9,15 @@ const Button = (props) => {
   const type = props.type || DEFAULT_TYPE;
   const title = props.title;
   const className = getClassString(DEFAULT_CLASS_NAME, props.subClass);
-  const disabled = !!props.disabled
+  const disabled = !!props.disabled;
+  const handleClick = props.handleClick;
 
   return (
     <button
       type={type}
       className={className}
       disabled={disabled}
-      onClick={props.handleClick}>
+      onClick={handleClick} >
       {title}
     </button>
   )

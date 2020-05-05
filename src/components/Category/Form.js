@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import Button from '../../UI/Button';
+import Input from '../../UI/Input';
 
 const errorText = {
   TITLE: 'There should be a title',
   MONEY_SUM: 'Sum must be numeric'
 };
+
+const DEFAULT_FORM_ID = 'add';
 
 const isFilledInput = (value) => {
   return typeof value !== `undefined`
@@ -17,6 +20,7 @@ class CategoryForm extends Component {
     super(props);
 
     this.initialState = {
+      id: this.props.id.toString() || DEFAULT_FORM_ID,
       title: this.props.title || '',
       moneySum: this.props.moneySum || '',
       validation: {
@@ -114,25 +118,25 @@ class CategoryForm extends Component {
   }
 
   render() {
-    const {title, moneySum, validation} = this.state;
+    const {id, title, moneySum, validation} = this.state;
     const {handleCancelClick} = this.props;
 
     return (
       <form
         className="category-form"
         onSubmit={this.handleSubmit}>
-        <input 
-          type="text" 
-          placeholder="Enter title" 
+        <Input 
+          id={id}
           name="title"
           value={title}
-          onChange={this.handleChange} />
-        <input 
-          type="text" 
-          placeholder="Enter money value" 
+          placeholder="Enter title"
+          handleChange={this.handleChange} />
+        <Input 
+          id={id}
           name="moneySum"
           value={moneySum}
-          onChange={this.handleChange} />
+          placeholder="Enter money value"
+          handleChange={this.handleChange} />
         <Button
           title="Save"
           type="submit"
