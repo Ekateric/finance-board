@@ -25,20 +25,19 @@ class CategoryAdd extends Component {
 
   render() {
     const {isCategoryAdd} = this.props;
-    let categoryAddContent;
 
     if (isCategoryAdd) {
-      categoryAddContent = <CategoryForm 
-        handleSubmit={this.handleSubmit}
-        handleCancelClick={this.handleClick} />;
-     
-    } else {
-      categoryAddContent = <CategoryAddButton handleClick={this.handleClick} />
+      return (
+        <div className="category-add">
+          <h3 className="category-add__title">New Category</h3>
+          <CategoryForm 
+            handleSubmit={this.handleSubmit}
+            handleCancelClick={this.handleClick} />
+        </div>
+      );
     }
 
-    return (
-      <div className="category-add">{categoryAddContent}</div>
-    );
+    return <CategoryAddButton handleClick={this.handleClick} />;
   }
 }
 
