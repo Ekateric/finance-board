@@ -10,7 +10,7 @@ const errorText = {
 const DEFAULT_FORM_ID = 'add';
 
 const isFilledInput = (value) => {
-  return typeof value !== `undefined`
+  return typeof value !== 'undefined'
     && value !== null
     && value.toString().replace(/^\s+|\s+$/g, ``).length > 0;
 };
@@ -20,7 +20,7 @@ class CategoryForm extends Component {
     super(props);
 
     this.initialState = {
-      id: this.props.id.toString() || DEFAULT_FORM_ID,
+      id: typeof this.props.id !== 'undefined' ? this.props.id.toString() : DEFAULT_FORM_ID,
       title: this.props.title || '',
       moneySum: this.props.moneySum || '',
       validation: {
@@ -130,12 +130,14 @@ class CategoryForm extends Component {
           name="title"
           value={title}
           placeholder="Enter title"
+          subClass={["w100", "mb"]}
           handleChange={this.handleChange} />
         <Input 
           id={id}
           name="moneySum"
           value={moneySum}
           placeholder="Enter money value"
+          subClass={["w100", "mb"]}
           handleChange={this.handleChange} />
         <Button
           title="Save"

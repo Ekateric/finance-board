@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CategoryForm from './Form';
 import Button from '../../UI/Button';
+import './Add.scss';
 
 const CategoryAddButton = (props) => {
   return (
@@ -24,15 +25,20 @@ class CategoryAdd extends Component {
 
   render() {
     const {isCategoryAdd} = this.props;
+    let categoryAddContent;
 
     if (isCategoryAdd) {
-      return <CategoryForm 
+      categoryAddContent = <CategoryForm 
         handleSubmit={this.handleSubmit}
         handleCancelClick={this.handleClick} />;
      
+    } else {
+      categoryAddContent = <CategoryAddButton handleClick={this.handleClick} />
     }
 
-    return <CategoryAddButton handleClick={this.handleClick} />;
+    return (
+      <div className="category-add">{categoryAddContent}</div>
+    );
   }
 }
 

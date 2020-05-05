@@ -1,5 +1,6 @@
 import React from 'react';
 import {getClassString} from '../assets/js';
+import './Input.scss';
 
 const DEFAULT_CLASS_NAME = 'input';
 const DEFAULT_TYPE = 'text';

@@ -1,0 +1,30 @@
+@import '../assets/styles/variables';
+
+.input {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 3px 7px;
+  border: 1px solid $border-color;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-size: 15px;
+  line-height: 1.1;
+  color: $font-default-color;
+  background-color: #fff;
+  border-radius: 2px;
+
+  &_w100 {
+    width: 100%;
+  }
+
+  &_mb {
+    margin-bottom: 7px;
+  }
+
+  &[disabled] {
+    background-color: #e3e6ed;
+    cursor: not-allowed;
+  }
+}
+
