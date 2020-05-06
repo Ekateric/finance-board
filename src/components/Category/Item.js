@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Button from '../../UI/Button';
-import CategoryForm from '../Category/Form';
+import CategoryForm from './Form';
+import CategoryAddSpending from './AddSpending';
 import './Item.scss';
 
 class CategoryItem extends Component {
@@ -11,7 +12,8 @@ class CategoryItem extends Component {
       id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
-      isEdit: false
+      isEdit: false,
+      isSpendingAdd: false
     };
   }
 
@@ -27,8 +29,14 @@ class CategoryItem extends Component {
     this.toggleEditForm();
   }
 
+  toggleAddSpendingForm = () => {
+    this.setState({
+      isSpendingAdd: !this.state.isSpendingAdd
+    });
+  }
+
   render() {
-    const {id, title, moneySum, isEdit} = this.state;
+    const {id, title, moneySum, isEdit, isSpendingAdd} = this.state;
     const {deleteCategory} = this.props;
 
     return (
@@ -44,6 +52,9 @@ class CategoryItem extends Component {
                 moneySum={moneySum}
                 handleSubmit={this.handleSubmit}
                 handleCancelClick={this.toggleEditForm} />
+              <CategoryAddSpending
+                isSpendingAdd={isSpendingAdd}
+                toggleAddSpendingForm={this.toggleAddSpendingForm} />
             </div>
           : <div className="category-item__body">
               <p>{moneySum}</p>
