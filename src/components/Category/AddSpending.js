@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SpendingForm from '../Spending/Form';
 
 class CategoryAddSpending extends Component {
   render() {
@@ -7,7 +8,7 @@ class CategoryAddSpending extends Component {
     return (
       <div className="category-add-spending">
         {isSpendingAdd
-        ? <form>Adding form</form>
+        ? <SpendingForm  />
         : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
         }
       </div>
