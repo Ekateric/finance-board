@@ -9,10 +9,10 @@ class SpendingForm extends Component {
     super(props);
 
     this.initialState = {
-      id: typeof this.props.id !== 'undefined' ? this.props.id.toString() : DEFAULT_FORM_ID,
-      descr: this.props.descr || '',
-      money: this.props.money || '',
-      cash: !!this.props.cash
+      id: this.props.id.toString(),
+      descr: this.props.descr,
+      money: this.props.money,
+      cash: this.props.cash
     }
 
     this.state = this.initialState;
@@ -72,6 +72,13 @@ class SpendingForm extends Component {
       </form>
     );
   }
+}
+
+SpendingForm.defaultProps = {
+  id: DEFAULT_FORM_ID,
+  descr: '',
+  money: '',
+  cash: false
 }
 
 export default SpendingForm;

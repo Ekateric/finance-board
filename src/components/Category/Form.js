@@ -20,9 +20,9 @@ class CategoryForm extends Component {
     super(props);
 
     this.initialState = {
-      id: typeof this.props.id !== 'undefined' ? this.props.id.toString() : DEFAULT_FORM_ID,
-      title: this.props.title || '',
-      moneySum: this.props.moneySum || '',
+      id: this.props.id.toString(),
+      title: this.props.title,
+      moneySum: this.props.moneySum,
       validation: {
         title: {
           isValid: !!this.props.title,
@@ -151,6 +151,12 @@ class CategoryForm extends Component {
       </form>
     );
   }
+}
+
+CategoryForm.defaultProps = {
+  id: DEFAULT_FORM_ID,
+  title: '',
+  moneySum: ''
 }
 
 export default CategoryForm;
