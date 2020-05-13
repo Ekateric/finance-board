@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Categories} from './data';
 import Total from './components/Total/Total';
 import CategoryList from './components/Category/List';
 import CategoryAdd from './components/Category/Add';
@@ -10,10 +9,29 @@ class App extends Component {
     super(props);
 
     this.state = {
-      categories: [...Categories],
-      nextCategoryId: Categories.length,
+      categories: [],
+      nextCategoryId: 0,
+      isLoading: false,
       isCategoryAdd: false
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      isLoading: true
+    });
+
+    this.props.api.getCategories()
+      .then((categories) => {
+        this.setState({
+          categories: categories,
+          nextCategoryId: categories.length,
+          isLoading: false
+        })
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   updateCategory = (category) => {
