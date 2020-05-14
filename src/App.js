@@ -11,6 +11,8 @@ class App extends Component {
     this.state = {
       categories: [],
       nextCategoryId: 0,
+      spendings: [],
+      nextSpendingId: 0,
       isLoading: false,
       isCategoryAdd: false
     };
@@ -21,13 +23,15 @@ class App extends Component {
       isLoading: true
     });
 
-    this.props.api.getCategories()
-      .then((categories) => {
+    this.props.api.getAll()
+      .then(([categories, spendings]) => {
         this.setState({
           categories: categories,
           nextCategoryId: categories.length,
+          spendings: spendings,
+          nextSpendingId: spendings.length,
           isLoading: false
-        })
+        }, () => console.log(this.state))
       })
       .catch((err) => {
         throw err;

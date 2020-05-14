@@ -11,8 +11,17 @@ class Api {
     this._base = base;
   }
 
+  getAll() {
+    return Promise.all([this.getCategories(), this.getSpendings()]);  
+  }
+
   getCategories() {
     return this._load('categories')
+      .then((response) => response.json())
+  }
+
+  getSpendings() {
+    return this._load('spendings')
       .then((response) => response.json())
   }
 

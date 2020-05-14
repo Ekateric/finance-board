@@ -1,0 +1,19 @@
+[
+  {
+    "id": 0,
+    "descr": "Buy cloth",
+    "money": -25,
+    "isCash": false
+  },
+  {
+    "id": 1,
+    "descr": "Flat rent",
+    "money": -2000,
+    "isCash": false
+  },
+  {
+    "id": 2,
+    "descr": "Electricity",
+    "money": -30
+  }
+]
