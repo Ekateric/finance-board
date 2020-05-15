@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Button from '../../UI/Button';
 import CategoryForm from './Form';
 import CategoryAddSpending from './AddSpending';
+import SpendingList from '../Spending/List';
 import './Item.scss';
 
 class CategoryItem extends Component {
@@ -12,6 +13,7 @@ class CategoryItem extends Component {
       id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
+      spendings: this.props.spendings,
       isEdit: false,
       isSpendingAdd: false
     };
@@ -36,7 +38,7 @@ class CategoryItem extends Component {
   }
 
   render() {
-    const {id, title, moneySum, isEdit, isSpendingAdd} = this.state;
+    const {id, title, moneySum, spendings, isEdit, isSpendingAdd} = this.state;
     const {deleteCategory} = this.props;
 
     return (
@@ -66,6 +68,9 @@ class CategoryItem extends Component {
                 subClass="err"
                 handleClick={() => deleteCategory(id)} />
             </div>
+          }
+          {spendings && spendings.length > 0 &&
+            <SpendingList spendings={spendings} />
           }
       </li>
     );

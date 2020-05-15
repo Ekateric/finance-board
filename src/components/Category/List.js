@@ -3,15 +3,23 @@ import CategoryItem from './Item';
 import './List.scss';
 
 const CategoryList = (props) => {
-  const items = props.categoriesData.map((category) => {
+  const {categoriesData, spendingsData, updateCategory, deleteCategory} = props;
+
+  const items = categoriesData.map((category) => {
+    const {id, title, moneySum, spendings=[]} = category;
+    const categorySpendings = spendings.map((spendingId) => {
+      return spendingsData.find((spendingItem) => spendingItem.id === spendingId);
+    });
+
     return (
       <CategoryItem 
-        key={category.id.toString()}
-        id={category.id}
-        title={category.title}
-        moneySum={category.moneySum} 
-        updateCategory={props.updateCategory}
-        deleteCategory={props.deleteCategory} />
+        key={id.toString()}
+        id={id}
+        title={title}
+        moneySum={moneySum}
+        spendings={categorySpendings}
+        updateCategory={updateCategory}
+        deleteCategory={deleteCategory} />
     )
   });
 

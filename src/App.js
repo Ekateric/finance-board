@@ -31,7 +31,7 @@ class App extends Component {
           spendings: spendings,
           nextSpendingId: spendings.length,
           isLoading: false
-        }, () => console.log(this.state))
+        })
       })
       .catch((err) => {
         throw err;
@@ -70,6 +70,23 @@ class App extends Component {
     });
   }
 
+  addSpending = (spending, categoryId) => {
+    spending.id = this.state.nextSpendingId;
+
+    this.setState({
+      categories: [...this.state.spendings, spending],
+      nextCategoryId: this.state.nextSpendingId + 1
+    });
+
+    const category = this.state.categories.find((item) => item.id === categoryId);
+    const categorySpendings = category.spendings ? [...category.spendings, spending.id] : [spending.id];
+
+    this.updateCategory({
+      id: categoryId,
+      spendings: categorySpendings
+    });
+  }
+
   countSum = () => {
     return this.state.categories.reduce((sum, category) => {
       return sum + Number(category.moneySum)
@@ -88,7 +105,8 @@ class App extends Component {
       <div className="finance-board">
         <Total sum={this.countSum()} />
         <CategoryList 
-          categoriesData={this.state.categories} 
+          categoriesData={this.state.categories}
+          spendingsData={this.state.spendings}
           updateCategory={this.updateCategory}
           deleteCategory={this.deleteCategory} />
         <CategoryAdd 

@@ -2,7 +2,8 @@
   {
     "id": 0,
     "title": "Common",
-    "moneySum": 1200
+    "moneySum": 1200,
+    "spendings": [2, 0]
   },
   {
     "id": 1,
@@ -17,6 +18,7 @@
   {
     "id": 3,
     "title": "Flat",
-    "moneySum": 200
+    "moneySum": 200,
+    "spendings": [1]
   }
 ]
