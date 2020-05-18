@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
@@ -12,7 +13,7 @@ class SpendingForm extends Component {
       id: this.props.id.toString(),
       descr: this.props.descr,
       money: this.props.money,
-      cash: this.props.cash
+      isCash: this.props.isCash
     }
 
     this.state = this.initialState;
@@ -33,7 +34,7 @@ class SpendingForm extends Component {
   }
 
   render() {
-    const {id, descr, money, cash} = this.state;
+    const {id, descr, money, isCash} = this.state;
 
     return (
       <form 
@@ -57,8 +58,8 @@ class SpendingForm extends Component {
           <input
             type="checkbox" 
             id={id}
-            name="cash"
-            checked={cash}
+            name="isCash"
+            checked={isCash}
             onChange={this.handleChange} />
           <span>cash payment</span>  
         </label>  
@@ -74,11 +75,21 @@ class SpendingForm extends Component {
   }
 }
 
+SpendingForm.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  descr: PropTypes.string.isRequired,
+  money: PropTypes.number.isRequired,
+  isCash: PropTypes.bool
+};
+
 SpendingForm.defaultProps = {
   id: DEFAULT_FORM_ID,
   descr: '',
-  money: '',
-  cash: false
+  money: 0,
+  isCash: false
 }
 
 export default SpendingForm;
