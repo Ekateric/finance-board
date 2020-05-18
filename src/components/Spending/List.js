@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SpendingItemContainer from './ItemContainer';
 
 const SpendingList = (props) => {
@@ -16,6 +17,10 @@ const SpendingList = (props) => {
   });
 
   return <ul className="spending-list">{items}</ul>
+};
+
+SpendingList.propTypes = {
+  spendings: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default SpendingList;

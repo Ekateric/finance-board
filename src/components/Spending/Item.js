@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SpendingItem = (props) => {
   const {descr, money, isCash} = props;
@@ -12,5 +13,11 @@ const SpendingItem = (props) => {
     </li>
   )
 }
+
+SpendingItem.propTypes = {
+  descr: PropTypes.string.isRequired,
+  money: PropTypes.number.isRequired,
+  isCash: PropTypes.bool
+};
 
 export default SpendingItem;

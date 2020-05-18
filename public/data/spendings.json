@@ -9,7 +9,7 @@
     "id": 1,
     "descr": "Flat rent",
     "money": -2000,
-    "isCash": false
+    "isCash": true
   },
   {
     "id": 2,

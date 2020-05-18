@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import SpendingItem from './Item';
 
 class SpendingItemContainer extends Component {
@@ -8,7 +9,8 @@ class SpendingItemContainer extends Component {
     this.state = {
       id: this.props.id,
       descr: this.props.descr,
-      money: this.props.money
+      money: this.props.money,
+      isCash: this.props.isCash
     };
   }
 
@@ -16,5 +18,15 @@ class SpendingItemContainer extends Component {
     return <SpendingItem {...this.state} />
   }
 }
+
+SpendingItemContainer.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  descr: PropTypes.string.isRequired,
+  money: PropTypes.number.isRequired,
+  isCash: PropTypes.bool
+};
 
 export default SpendingItemContainer;
