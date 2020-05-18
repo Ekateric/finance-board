@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './Total.scss';
 
 class Total extends Component {
@@ -13,5 +14,9 @@ class Total extends Component {
     );
   }
 }
+
+Total.propTypes = {
+  sum: PropTypes.number.isRequired
+};
 
 export default Total;
