@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Api from './services/Api';
 import Total from './components/Total/Total';
 import CategoryList from './components/Category/List';
 import CategoryAdd from './components/Category/Add';
@@ -117,5 +119,9 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  api: PropTypes.instanceOf(Api).isRequired
+};
 
 export default App;

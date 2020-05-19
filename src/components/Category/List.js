@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CategoryItem from './Item';
 import './List.scss';
 
@@ -23,7 +24,14 @@ const CategoryList = (props) => {
     )
   });
 
-  return <ul className="categories-list">{items}</ul>
+  return <ul className="categories-list">{items}</ul>;
 }
+
+CategoryList.propTypes = {
+  categoriesData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  spendingsData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateCategory: PropTypes.func.isRequired,
+  deleteCategory: PropTypes.func.isRequired
+};
 
 export default CategoryList;

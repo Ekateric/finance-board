@@ -10,8 +10,8 @@ const CategoryAddButton = (props) => {
       title="Add new category"
       subClass={["huge", "info"]}
       handleClick={props.handleClick} />
-  )
-}
+  );
+};
 
 CategoryAddButton.propTypes = {
   handleClick: PropTypes.func.isRequired

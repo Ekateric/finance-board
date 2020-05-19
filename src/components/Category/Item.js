@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
 import CategoryForm from './Form';
 import CategoryAddSpending from './AddSpending';
@@ -76,5 +77,17 @@ class CategoryItem extends Component {
     );
   }
 }
+
+CategoryItem.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  title: PropTypes.string.isRequired,
+  moneySum: PropTypes.number.isRequired,
+  spendings: PropTypes.arrayOf(PropTypes.object),
+  updateCategory: PropTypes.func.isRequired,
+  deleteCategory: PropTypes.func.isRequired
+};
 
 export default CategoryItem;
