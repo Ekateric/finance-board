@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import CategoryForm from './Form';
 import Button from '../../UI/Button';
 import './Add.scss';
@@ -11,6 +12,10 @@ const CategoryAddButton = (props) => {
       handleClick={props.handleClick} />
   )
 }
+
+CategoryAddButton.propTypes = {
+  handleClick: PropTypes.func.isRequired
+};
 
 class CategoryAdd extends Component {
   handleClick = (evt) => {
@@ -40,5 +45,11 @@ class CategoryAdd extends Component {
     return <CategoryAddButton handleClick={this.handleClick} />;
   }
 }
+
+CategoryAdd.propTypes = {
+  isCategoryAdd: PropTypes.bool.isRequired,
+  addCategory: PropTypes.func.isRequired,
+  toggleCategoriesAddForm: PropTypes.func.isRequired
+};
 
 export default CategoryAdd;

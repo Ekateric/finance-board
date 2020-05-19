@@ -1,19 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SpendingForm from '../Spending/Form';
 
-class CategoryAddSpending extends Component {
-  render() {
-    const {isSpendingAdd, toggleAddSpendingForm} = this.props;
+const CategoryAddSpending = (props) => {
+  const {isSpendingAdd, toggleAddSpendingForm} = props;
 
-    return (
-      <div className="category-add-spending">
-        {isSpendingAdd
-        ? <SpendingForm  />
-        : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
-        }
-      </div>
-    );
-  }
+  return (
+    <div className="category-add-spending">
+      {isSpendingAdd
+      ? <SpendingForm  />
+      : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
+      }
+    </div>
+  );
 }
+
+CategoryAddSpending.propTypes = {
+  isSpendingAdd: PropTypes.bool.isRequired,
+  toggleAddSpendingForm: PropTypes.func.isRequired
+};
 
 export default CategoryAddSpending;
