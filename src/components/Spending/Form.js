@@ -90,6 +90,6 @@ SpendingForm.defaultProps = {
   descr: '',
   money: 0,
   isCash: false
-}
+};
 
 export default SpendingForm;

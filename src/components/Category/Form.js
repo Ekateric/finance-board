@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
@@ -153,10 +154,21 @@ class CategoryForm extends Component {
   }
 }
 
+CategoryForm.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  title: PropTypes.string.isRequired,
+  moneySum: PropTypes.number.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleCancelClick: PropTypes.func.isRequired
+};
+
 CategoryForm.defaultProps = {
   id: DEFAULT_FORM_ID,
   title: '',
-  moneySum: ''
-}
+  moneySum: 0
+};
 
 export default CategoryForm;
