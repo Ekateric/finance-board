@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import CategoryForm from './Form';
+import CategoryFormContainer from './FormContainer';
 import Button from '../../UI/Button';
 import './Add.scss';
 
@@ -35,7 +35,7 @@ class CategoryAdd extends Component {
       return (
         <div className="category-add">
           <h3 className="category-add__title">New Category</h3>
-          <CategoryForm 
+          <CategoryFormContainer 
             handleSubmit={this.handleSubmit}
             handleCancelClick={this.handleClick} />
         </div>

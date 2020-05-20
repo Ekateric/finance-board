@@ -44,9 +44,9 @@ SpendingFormContainer.propTypes = {
   id: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ]).isRequired,
-  descr: PropTypes.string.isRequired,
-  money: PropTypes.number.isRequired,
+  ]),
+  descr: PropTypes.string,
+  money: PropTypes.number,
   isCash: PropTypes.bool
 };
 

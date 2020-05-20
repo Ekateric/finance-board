@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
-import CategoryForm from './Form';
+import CategoryFormContainer from './FormContainer';
 import CategoryAddSpending from './AddSpending';
 import SpendingList from '../Spending/List';
 import './Item.scss';
@@ -49,7 +49,7 @@ class CategoryItem extends Component {
           {isEdit
           ? <div className="category-item__body">
               <p>Changing category:</p>
-              <CategoryForm 
+              <CategoryFormContainer 
                 id={id}
                 title={title}
                 moneySum={moneySum}
