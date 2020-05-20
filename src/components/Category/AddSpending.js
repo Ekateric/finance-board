@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SpendingForm from '../Spending/Form';
+import SpendingFormContainer from '../Spending/FormContainer';
 
 const CategoryAddSpending = (props) => {
   const {isSpendingAdd, toggleAddSpendingForm} = props;
@@ -8,7 +8,7 @@ const CategoryAddSpending = (props) => {
   return (
     <div className="category-add-spending">
       {isSpendingAdd
-      ? <SpendingForm  />
+      ? <SpendingFormContainer />
       : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
       }
     </div>
