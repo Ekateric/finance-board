@@ -30,6 +30,12 @@ class SpendingFormContainer extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
 
+    this.props.handleSubmit({
+      descr: this.state.descr,
+      money: Number(this.state.money),
+      isCash: this.props.isCash
+    });
+    this.setState(this.initialState);
   }
 
   render() {
@@ -47,7 +53,8 @@ SpendingFormContainer.propTypes = {
   ]),
   descr: PropTypes.string,
   money: PropTypes.number,
-  isCash: PropTypes.bool
+  isCash: PropTypes.bool,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 SpendingFormContainer.defaultProps = {

@@ -14,7 +14,6 @@ class CategoryItem extends Component {
       id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
-      spendings: this.props.spendings,
       isEdit: false,
       isSpendingAdd: false
     };
@@ -28,7 +27,7 @@ class CategoryItem extends Component {
 
   handleSubmit = (newCategory) => {
     this.setState(newCategory);
-    this.props.updateCategory({...newCategory, id: this.state.id});
+    this.props.categoryHandlers.update({...newCategory, id: this.state.id});
     this.toggleEditForm();
   }
 
@@ -38,9 +37,13 @@ class CategoryItem extends Component {
     });
   }
 
+  addSpending = (newSpending) => {
+    this.props.spendingHandlers.add(newSpending, this.state.id);
+  }
+
   render() {
-    const {id, title, moneySum, spendings, isEdit, isSpendingAdd} = this.state;
-    const {deleteCategory} = this.props;
+    const {id, title, moneySum, isEdit, isSpendingAdd} = this.state;
+    const {spendings, spendingsData, categoryHandlers} = this.props;
 
     return (
       <li className="category-item">
@@ -57,7 +60,8 @@ class CategoryItem extends Component {
                 handleCancelClick={this.toggleEditForm} />
               <CategoryAddSpending
                 isSpendingAdd={isSpendingAdd}
-                toggleAddSpendingForm={this.toggleAddSpendingForm} />
+                toggleAddSpendingForm={this.toggleAddSpendingForm}
+                addSpending={this.addSpending} />
             </div>
           : <div className="category-item__body">
               <p>{moneySum}</p>
@@ -67,11 +71,13 @@ class CategoryItem extends Component {
               <Button
                 title="Delete"
                 subClass="err"
-                handleClick={() => deleteCategory(id)} />
+                handleClick={() => categoryHandlers.delete(id)} />
             </div>
           }
           {spendings && spendings.length > 0 &&
-            <SpendingList spendings={spendings} />
+            <SpendingList 
+              spendings={spendings}
+              spendingsData={spendingsData} />
           }
       </li>
     );
@@ -85,9 +91,10 @@ CategoryItem.propTypes = {
   ]).isRequired,
   title: PropTypes.string.isRequired,
   moneySum: PropTypes.number.isRequired,
-  spendings: PropTypes.arrayOf(PropTypes.object),
-  updateCategory: PropTypes.func.isRequired,
-  deleteCategory: PropTypes.func.isRequired
+  spendings: PropTypes.array,
+  spendingsData: PropTypes.arrayOf(PropTypes.object),
+  categoryHandlers: PropTypes.objectOf(PropTypes.func).isRequired,
+  spendingHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 export default CategoryItem;

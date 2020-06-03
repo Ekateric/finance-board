@@ -4,13 +4,10 @@ import CategoryItem from './Item';
 import './List.scss';
 
 const CategoryList = (props) => {
-  const {categoriesData, spendingsData, updateCategory, deleteCategory} = props;
+  const {categoriesData, spendingsData, categoryHandlers, spendingHandlers} = props;
 
   const items = categoriesData.map((category) => {
     const {id, title, moneySum, spendings=[]} = category;
-    const categorySpendings = spendings.map((spendingId) => {
-      return spendingsData.find((spendingItem) => spendingItem.id === spendingId);
-    });
 
     return (
       <CategoryItem 
@@ -18,9 +15,10 @@ const CategoryList = (props) => {
         id={id}
         title={title}
         moneySum={moneySum}
-        spendings={categorySpendings}
-        updateCategory={updateCategory}
-        deleteCategory={deleteCategory} />
+        spendings={spendings}
+        spendingsData={spendingsData}
+        categoryHandlers={categoryHandlers}
+        spendingHandlers={spendingHandlers} />
     )
   });
 
@@ -30,8 +28,8 @@ const CategoryList = (props) => {
 CategoryList.propTypes = {
   categoriesData: PropTypes.arrayOf(PropTypes.object).isRequired,
   spendingsData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateCategory: PropTypes.func.isRequired,
-  deleteCategory: PropTypes.func.isRequired
+  categoryHandlers: PropTypes.objectOf(PropTypes.func).isRequired,
+  spendingHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 export default CategoryList;

@@ -52,7 +52,10 @@ SpendingForm.propTypes = {
       PropTypes.number
     ]).isRequired,
     descr: PropTypes.string.isRequired,
-    money: PropTypes.number.isRequired,
+    money: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
     isCash: PropTypes.bool
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,

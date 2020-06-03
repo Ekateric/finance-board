@@ -76,8 +76,8 @@ class App extends Component {
     spending.id = this.state.nextSpendingId;
 
     this.setState({
-      categories: [...this.state.spendings, spending],
-      nextCategoryId: this.state.nextSpendingId + 1
+      spendings: [...this.state.spendings, spending],
+      nextSpendingId: this.state.nextSpendingId + 1
     });
 
     const category = this.state.categories.find((item) => item.id === categoryId);
@@ -102,6 +102,14 @@ class App extends Component {
   }
 
   render() {
+    const categoryHandlers = {
+      update: this.updateCategory,
+      delete: this.deleteCategory
+    };
+
+    const spendingHandlers = {
+      add: this.addSpending
+    };
 
     return (
       <div className="finance-board">
@@ -109,8 +117,8 @@ class App extends Component {
         <CategoryList 
           categoriesData={this.state.categories}
           spendingsData={this.state.spendings}
-          updateCategory={this.updateCategory}
-          deleteCategory={this.deleteCategory} />
+          categoryHandlers={categoryHandlers}
+          spendingHandlers={spendingHandlers} />
         <CategoryAdd 
           isCategoryAdd={this.state.isCategoryAdd} 
           toggleCategoriesAddForm={this.toggleCategoryAddForm} 

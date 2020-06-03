@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import SpendingItemContainer from './ItemContainer';
 
 const SpendingList = (props) => {
-  const items = props.spendings.map((spending) => {
-    const {id, descr, money, isCash} = spending;
+  const items = props.spendings.map((spendingId) => {
+    const spendingItem = props.spendingsData.find((spending) => spending.id === spendingId);
+    const {id, descr, money, isCash} = spendingItem;
 
     return (
       <SpendingItemContainer
@@ -20,7 +21,8 @@ const SpendingList = (props) => {
 };
 
 SpendingList.propTypes = {
-  spendings: PropTypes.arrayOf(PropTypes.object)
+  spendings: PropTypes.array.isRequired,
+  spendingsData: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default SpendingList;
