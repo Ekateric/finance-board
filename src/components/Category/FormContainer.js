@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CategoryForm from './Form';
+import FormValidation from '../../services/FormValidation';
 
 const errorText = {
   TITLE: 'There should be a title',
@@ -9,86 +10,37 @@ const errorText = {
 
 const DEFAULT_FORM_ID = 'add';
 
-const isFilledInput = (value) => {
-  return typeof value !== 'undefined'
-    && value !== null
-    && value.toString().replace(/^\s+|\s+$/g, ``).length > 0;
-};
-
 class CategoryFormContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.formValidation = new FormValidation({
+      title: {
+        type: 'text',
+        error: errorText.TITLE
+      },
+      moneySum: {
+        type: 'num',
+        error: errorText.MONEY_SUM
+      }
+    });
+
+    
     this.initialState = {
       id: this.props.id.toString(),
       title: this.props.title,
       moneySum: this.props.moneySum,
-      validation: {
-        title: {
-          isValid: isFilledInput(this.props.title),
-          error: ''
-        },
-        moneySum: {
-          isValid: isFilledInput(this.props.moneySum),
-          error: ''
-        },
-        form: {
-          isValid: false
-        }
-      }
+      validation: this.formValidation.update({
+        title: this.props.title,
+        moneySum: this.props.moneySum
+      })
     };
 
     this.state = this.initialState;
   }
 
-  validateInput = (inputName, value) => {
-    let isValid = false;
-    let error = '';
-
-    switch (inputName) {
-      case 'title':
-        isValid = isFilledInput(value);
-        error = isValid ? '' : errorText.TITLE;
-        break;
-
-      case 'moneySum':
-        isValid = isFilledInput(value) && !isNaN(value);
-        error = isValid ? '' : errorText.MONEY_SUM;
-        break;
-
-      default:
-        break;
-    }
-
-    const validation = {...this.state.validation};
-
-    validation[inputName] = {
-      ...validation[inputName],
-      ...{
-        isValid: isValid,
-        error: error
-      }
-    };
-
-    this.setState({
-      validation: validation
-    }, this.validateForm);
-  }
-
-  validateForm = () => {
-    const validation = {...this.state.validation};
-    let isValidForm = true;
-
-    for (let inputName in validation) {
-      if (inputName !== 'form') {
-        if (!validation[inputName].isValid) {
-          isValidForm = false;
-          break;
-        }
-      }
-    }
-
-    validation.form.isValid = isValidForm;
+  validate = (inputName, value) => {
+    const validation = this.formValidation.update({[inputName]: value});
 
     this.setState({
       validation: validation
@@ -100,7 +52,7 @@ class CategoryFormContainer extends Component {
 
     this.setState({
       [name]: value
-    }, () => this.validateInput(name, value));
+    }, () => this.validate(name, value));
   }
 
   handleSubmit = (evt) => {
@@ -115,10 +67,6 @@ class CategoryFormContainer extends Component {
 
   handleCancelClick = (evt) => {
     this.props.handleCancelClick(evt);
-  }
-
-  componentDidMount() {
-    this.validateForm();
   }
 
   render() {
