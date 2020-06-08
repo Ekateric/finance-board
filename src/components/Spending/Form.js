@@ -5,7 +5,7 @@ import Input from '../../UI/Input';
 
 const SpendingForm = (props) => {
   const {data, handleSubmit, handleChange} = props;
-  const {id, descr, money, isCash} = data;
+  const {id, descr, money, isCash, validation} = data;
 
   return (
     <form 
@@ -37,7 +37,8 @@ const SpendingForm = (props) => {
       <Button
         title="Save"
         type="submit"
-        subClass="info" />
+        subClass="info"
+        disabled={!validation.form.isValid} />
       <Button
         title="Cancel"
         subClass="warn" />
@@ -56,7 +57,8 @@ SpendingForm.propTypes = {
       PropTypes.string,
       PropTypes.number
     ]).isRequired,
-    isCash: PropTypes.bool
+    isCash: PropTypes.bool,
+    validation: PropTypes.object.isRequired
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired

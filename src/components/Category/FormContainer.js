@@ -24,7 +24,6 @@ class CategoryFormContainer extends Component {
         error: errorText.MONEY_SUM
       }
     });
-
     
     this.initialState = {
       id: this.props.id.toString(),
