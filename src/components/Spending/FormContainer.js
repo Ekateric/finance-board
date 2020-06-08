@@ -71,11 +71,16 @@ class SpendingFormContainer extends Component {
     this.setState(this.initialState);
   }
 
+  handleCancelClick = (evt) => {
+    this.props.handleCancelClick(evt);
+  }
+
   render() {
     return <SpendingForm
       data={this.state}
       handleChange={this.handleChange}
-      handleSubmit={this.handleSubmit} />
+      handleSubmit={this.handleSubmit}
+      handleCancelClick={this.handleCancelClick} />
   }
 }
 
@@ -87,7 +92,8 @@ SpendingFormContainer.propTypes = {
   descr: PropTypes.string,
   money: PropTypes.number,
   isCash: PropTypes.bool,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  handleCancelClick: PropTypes.func.isRequired
 };
 
 SpendingFormContainer.defaultProps = {

@@ -15,7 +15,8 @@ class CategoryAddSpending extends Component {
       <div className="category-add-spending">
         {isSpendingAdd
         ? <SpendingFormContainer 
-            handleSubmit={this.handleSubmit} />
+            handleSubmit={this.handleSubmit}
+            handleCancelClick={toggleAddSpendingForm} />
         : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
         }
       </div>

@@ -4,7 +4,7 @@ import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
 const SpendingForm = (props) => {
-  const {data, handleSubmit, handleChange} = props;
+  const {data, handleSubmit, handleChange, handleCancelClick} = props;
   const {id, descr, money, isCash, validation} = data;
 
   return (
@@ -41,7 +41,8 @@ const SpendingForm = (props) => {
         disabled={!validation.form.isValid} />
       <Button
         title="Cancel"
-        subClass="warn" />
+        subClass="warn"
+        handleClick={handleCancelClick} />
     </form>
   );
 }
@@ -61,7 +62,8 @@ SpendingForm.propTypes = {
     validation: PropTypes.object.isRequired
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  handleCancelClick: PropTypes.func.isRequired
 };
 
 export default SpendingForm;
