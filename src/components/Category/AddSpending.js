@@ -9,7 +9,7 @@ class CategoryAddSpending extends Component {
   }
 
   render() {
-    const {isSpendingAdd, toggleAddSpendingForm} = this.props;
+    const {buttonText, isSpendingAdd, toggleAddSpendingForm} = this.props;
 
     return (
       <div className="category-add-spending">
@@ -17,7 +17,7 @@ class CategoryAddSpending extends Component {
         ? <SpendingFormContainer 
             handleSubmit={this.handleSubmit}
             handleCancelClick={toggleAddSpendingForm} />
-        : <span onClick={() => toggleAddSpendingForm()}>+ Add spending list</span>
+        : <span onClick={() => toggleAddSpendingForm()}>{buttonText}</span>
         }
       </div>
     );
@@ -26,9 +26,15 @@ class CategoryAddSpending extends Component {
 }
 
 CategoryAddSpending.propTypes = {
+  buttonText: PropTypes.string.isRequired,
   isSpendingAdd: PropTypes.bool.isRequired,
   toggleAddSpendingForm: PropTypes.func.isRequired,
-  addSpending: PropTypes.func.isRequired
+  addSpending: PropTypes.func.isRequired,
+  disabled: PropTypes.bool
+};
+
+CategoryAddSpending.defaultProps = {
+  disabled: false
 };
 
 export default CategoryAddSpending;

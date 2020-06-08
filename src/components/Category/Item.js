@@ -6,6 +6,11 @@ import CategoryAddSpending from './AddSpending';
 import SpendingList from '../Spending/List';
 import './Item.scss';
 
+const addSpendingText = {
+  LIST: '+ spending list',
+  ITEM: '+ spending item'
+};
+
 class CategoryItem extends Component {
   constructor(props) {
     super(props);
@@ -45,12 +50,16 @@ class CategoryItem extends Component {
     const {id, title, moneySum, isEdit, isSpendingAdd} = this.state;
     const {spendings, spendingsData, categoryHandlers} = this.props;
 
+    const addSpendingButtonText = spendings && spendings.length > 0 
+      ? addSpendingText.ITEM 
+      : addSpendingText.LIST;
+
     return (
       <li className="category-item">
         <h3 className="category-item__title">{title}</h3>
-        
+        <div className="category-item__body">
           {isEdit
-          ? <div className="category-item__body">
+          ? <>
               <p>Changing category:</p>
               <CategoryFormContainer 
                 id={id}
@@ -58,27 +67,31 @@ class CategoryItem extends Component {
                 moneySum={moneySum}
                 handleSubmit={this.handleSubmit}
                 handleCancelClick={this.toggleEditForm} />
-              <CategoryAddSpending
-                isSpendingAdd={isSpendingAdd}
-                toggleAddSpendingForm={this.toggleAddSpendingForm}
-                addSpending={this.addSpending} />
-            </div>
-          : <div className="category-item__body">
+            </>
+          : <>
               <p>{moneySum}</p>
               <Button
                 title="Edit"
-                handleClick={this.toggleEditForm} />
+                handleClick={this.toggleEditForm}
+                disabled={isSpendingAdd} />
               <Button
                 title="Delete"
                 subClass="err"
                 handleClick={() => categoryHandlers.delete(id)} />
-            </div>
+            </>
           }
-          {spendings && spendings.length > 0 &&
-            <SpendingList 
-              spendings={spendings}
-              spendingsData={spendingsData} />
-          }
+        </div>
+        {spendings && spendings.length > 0 &&
+          <SpendingList 
+            spendings={spendings}
+            spendingsData={spendingsData} />
+        }
+        <CategoryAddSpending
+          buttonText={addSpendingButtonText}
+          isSpendingAdd={isSpendingAdd}
+          toggleAddSpendingForm={this.toggleAddSpendingForm}
+          addSpending={this.addSpending}
+          disabled={isEdit} />
       </li>
     );
   }
