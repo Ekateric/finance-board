@@ -38,7 +38,8 @@
     font-size: 17px;
   }
 
-  &[disabled] {
+  &[disabled],
+  &_disabled {
     color: $font-disable-color;
     border-color: $font-disable-color;
     cursor: not-allowed;

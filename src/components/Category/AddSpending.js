@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SpendingFormContainer from '../Spending/FormContainer';
+import Link from '../../UI/Link';
 
 class CategoryAddSpending extends Component {
   handleSubmit = (newSpending) => {
@@ -17,7 +18,10 @@ class CategoryAddSpending extends Component {
         ? <SpendingFormContainer 
             handleSubmit={this.handleSubmit}
             handleCancelClick={toggleAddSpendingForm} />
-        : <span onClick={() => toggleAddSpendingForm()}>{buttonText}</span>
+        : <Link
+            element="button"
+            title={buttonText}
+            handleClick={() => toggleAddSpendingForm()} />
         }
       </div>
     );
