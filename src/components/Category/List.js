@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CategoryItem from './Item';
+import CategoryItemContainer from './ItemContainer';
 import './List.scss';
 
 const CategoryList = (props) => {
@@ -10,7 +10,7 @@ const CategoryList = (props) => {
     const {id, title, moneySum, spendings=[]} = category;
 
     return (
-      <CategoryItem 
+      <CategoryItemContainer 
         key={id.toString()}
         id={id}
         title={title}
