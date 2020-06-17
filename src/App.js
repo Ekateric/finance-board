@@ -90,8 +90,23 @@ class App extends Component {
   }
 
   countSum = () => {
+    const spendings = this.state.spendings;
+
     return this.state.categories.reduce((sum, category) => {
-      return sum + Number(category.moneySum)
+      let categorySum = 0;
+
+      if (category.spendings && category.spendings.length > 0) {
+        categorySum = category.spendings.reduce((spendingsSum, spendingId) => {
+          const spending = spendings.find((item) => item.id === spendingId);
+
+          return spendingsSum + Number(spending.money);
+        }, 0);
+
+      } else {
+        categorySum += Number(category.moneySum);
+      }
+
+      return sum + categorySum;
     }, 0);
   }
 
