@@ -7,8 +7,8 @@ import SpendingList from '../Spending/List';
 import './Item.scss';
 
 const CategoryItem = (props) => {
-  const {data, spendings, spendingsData, addSpendingButtonText, editHandlers, spendingHandlers} = props;
-  const {id, title, moneySum, isEdit, isSpendingAdd} = data;
+  const {data, spendings, spendingsData, editHandlers, spendingHandlers} = props;
+  const {id, title, moneySum, isEdit, isSpendingAdd, addSpendingButtonText} = data;
 
   return (
     <li className="category-item">
@@ -61,11 +61,11 @@ CategoryItem.propTypes = {
     title: PropTypes.string.isRequired,
     moneySum: PropTypes.number.isRequired,
     isEdit: PropTypes.bool.isRequired,
-    isSpendingAdd: PropTypes.bool.isRequired
-  }),
+    isSpendingAdd: PropTypes.bool.isRequired,
+    addSpendingButtonText: PropTypes.string.isRequired
+  }).isRequired,
   spendings: PropTypes.array,
   spendingsData: PropTypes.arrayOf(PropTypes.object),
-  addSpendingButtonText: PropTypes.string.isRequired,
   editHandlers: PropTypes.objectOf(PropTypes.func).isRequired,
   spendingHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };

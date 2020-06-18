@@ -12,9 +12,6 @@ class CategoryItemContainer extends Component {
     super(props);
 
     this.state = {
-      id: this.props.id,
-      title: this.props.title,
-      moneySum: this.props.moneySum,
       isEdit: false,
       isSpendingAdd: false
     };
@@ -27,13 +24,12 @@ class CategoryItemContainer extends Component {
   }
 
   handleSubmit = (newCategory) => {
-    this.setState(newCategory);
-    this.props.categoryHandlers.update({...newCategory, id: this.state.id});
+    this.props.categoryHandlers.update({...newCategory, id: this.props.id});
     this.toggleEditForm();
   }
 
   handleDeleteClick = () => {
-    this.props.categoryHandlers.delete(this.state.id)
+    this.props.categoryHandlers.delete(this.props.id)
   }
 
   toggleAddSpendingForm = () => {
@@ -43,14 +39,21 @@ class CategoryItemContainer extends Component {
   }
 
   addSpending = (newSpending) => {
-    this.props.spendingHandlers.add(newSpending, this.state.id);
+    this.props.spendingHandlers.add(newSpending, this.props.id);
   }
 
   render() {
     const {spendings, spendingsData} = this.props;
-    const addSpendingButtonText = spendings && spendings.length > 0 
-    ? addSpendingText.ITEM 
-    : addSpendingText.LIST;
+    const data = {
+      id: this.props.id,
+      title: this.props.title,
+      moneySum: this.props.moneySum,
+      isEdit: this.state.isEdit,
+      isSpendingAdd: this.state.isSpendingAdd,
+      addSpendingButtonText: spendings && spendings.length > 0 
+        ? addSpendingText.ITEM 
+        : addSpendingText.LIST
+    };
     const editHandlers = {
       toggleForm: this.toggleEditForm,
       formSubmit: this.handleSubmit,
@@ -63,10 +66,9 @@ class CategoryItemContainer extends Component {
 
     return (
       <CategoryItem
-        data={this.state}
+        data={data}
         spendings={spendings}
         spendingsData={spendingsData}
-        addSpendingButtonText={addSpendingButtonText}
         editHandlers={editHandlers}
         spendingHandlers={spendingHandlers}
       />

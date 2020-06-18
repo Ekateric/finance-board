@@ -27,6 +27,8 @@ class App extends Component {
 
     this.props.api.getAll()
       .then(([categories, spendings]) => {
+        this.updateAllMoneySums(categories, spendings);
+        
         this.setState({
           categories: categories,
           nextCategoryId: categories.length,
@@ -40,9 +42,31 @@ class App extends Component {
       });
   }
 
+  updateAllMoneySums = (categories, spendings) => {
+    categories.forEach((category) => {
+      if (category.spendings && category.spendings.length > 0) {
+        category.moneySum = this.countCategoryMoneySum(spendings, category.spendings);
+      }
+    });
+  }
+
+  countCategoryMoneySum = (spendings, categorySpendings) => {
+    return categorySpendings.reduce((spendingsSum, spendingId) => {
+      const spending = spendings.find((item) => item.id === spendingId);
+
+      return spendingsSum + Number(spending.money);
+    }, 0);
+  }
+
   updateCategory = (category) => {
     const categories = [...this.state.categories];
     const categoryIndex = categories.findIndex((item) => item.id === category.id);
+
+    if (category.spendings) {
+      const spendings = this.state.spendings;
+
+      category.moneySum = this.countCategoryMoneySum(spendings, category.spendings);
+    }
 
     categories[categoryIndex] = {...categories[categoryIndex], ...category};
 
@@ -78,35 +102,20 @@ class App extends Component {
     this.setState({
       spendings: [...this.state.spendings, spending],
       nextSpendingId: this.state.nextSpendingId + 1
-    });
-
-    const category = this.state.categories.find((item) => item.id === categoryId);
-    const categorySpendings = category.spendings ? [...category.spendings, spending.id] : [spending.id];
-
-    this.updateCategory({
-      id: categoryId,
-      spendings: categorySpendings
+    }, () => {
+      const category = this.state.categories.find((item) => item.id === categoryId);
+      const categorySpendings = category.spendings ? [...category.spendings, spending.id] : [spending.id];
+  
+      this.updateCategory({
+        id: categoryId,
+        spendings: categorySpendings
+      });
     });
   }
 
   countSum = () => {
-    const spendings = this.state.spendings;
-
     return this.state.categories.reduce((sum, category) => {
-      let categorySum = 0;
-
-      if (category.spendings && category.spendings.length > 0) {
-        categorySum = category.spendings.reduce((spendingsSum, spendingId) => {
-          const spending = spendings.find((item) => item.id === spendingId);
-
-          return spendingsSum + Number(spending.money);
-        }, 0);
-
-      } else {
-        categorySum += Number(category.moneySum);
-      }
-
-      return sum + categorySum;
+      return sum + Number(category.moneySum);
     }, 0);
   }
 
