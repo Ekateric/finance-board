@@ -29,6 +29,7 @@ class CategoryFormContainer extends Component {
       id: this.props.id.toString(),
       title: this.props.title,
       moneySum: this.props.moneySum,
+      disabled: this.props.disabled,
       validation: this.formValidation.update({
         title: this.props.title,
         moneySum: this.props.moneySum
@@ -84,6 +85,7 @@ CategoryFormContainer.propTypes = {
   ]),
   title: PropTypes.string,
   moneySum: PropTypes.number,
+  disabled: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   handleCancelClick: PropTypes.func.isRequired
 };
@@ -91,7 +93,11 @@ CategoryFormContainer.propTypes = {
 CategoryFormContainer.defaultProps = {
   id: DEFAULT_FORM_ID,
   title: '',
-  moneySum: 0
+  moneySum: 0,
+  disabled: {
+    title: false,
+    moneySum: false
+  }
 };
 
 export default CategoryFormContainer;

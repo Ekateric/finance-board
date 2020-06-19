@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CategoryItem from './Item';
 
-const addSpendingText = {
-  LIST: '+ spending list',
-  ITEM: '+ spending item'
-};
-
 class CategoryItemContainer extends Component {
   constructor(props) {
     super(props);
@@ -44,15 +39,18 @@ class CategoryItemContainer extends Component {
 
   render() {
     const {spendings, spendingsData} = this.props;
+    const isEmptySpendings = !(spendings && spendings.length > 0);
     const data = {
       id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
       isEdit: this.state.isEdit,
       isSpendingAdd: this.state.isSpendingAdd,
-      addSpendingButtonText: spendings && spendings.length > 0 
-        ? addSpendingText.ITEM 
-        : addSpendingText.LIST
+      isEmptySpendings: isEmptySpendings,
+      disabledEdit: {
+        title: false,
+        moneySum: !isEmptySpendings
+      }
     };
     const editHandlers = {
       toggleForm: this.toggleEditForm,

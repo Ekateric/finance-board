@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import SpendingFormContainer from '../Spending/FormContainer';
 import Link from '../../UI/Link';
 
+const addSpendingText = {
+  LIST: '+ spending list',
+  ITEM: '+ spending item'
+};
+
 class CategoryAddSpending extends Component {
   handleSubmit = (newSpending) => {
     this.props.addSpending(newSpending);
@@ -10,17 +15,25 @@ class CategoryAddSpending extends Component {
   }
 
   render() {
-    const {buttonText, isSpendingAdd, toggleAddSpendingForm} = this.props;
+    const {isEmptySpendings, isSpendingAdd, toggleAddSpendingForm, disabled} = this.props;
+    const buttonText = isEmptySpendings ? addSpendingText.LIST : addSpendingText.ITEM;
 
     return (
       <div className="category-add-spending">
         {isSpendingAdd
-        ? <SpendingFormContainer 
-            handleSubmit={this.handleSubmit}
-            handleCancelClick={toggleAddSpendingForm} />
+        ? <>
+            {isEmptySpendings
+            ? <p>If you add a waste, you`ll not be able to edit the amount</p>
+            : ''
+            }
+            <SpendingFormContainer 
+              handleSubmit={this.handleSubmit}
+              handleCancelClick={toggleAddSpendingForm} />
+          </>
         : <Link
             element="button"
             title={buttonText}
+            disabled={disabled}
             handleClick={() => toggleAddSpendingForm()} />
         }
       </div>
@@ -30,7 +43,7 @@ class CategoryAddSpending extends Component {
 }
 
 CategoryAddSpending.propTypes = {
-  buttonText: PropTypes.string.isRequired,
+  isEmptySpendings: PropTypes.bool.isRequired,
   isSpendingAdd: PropTypes.bool.isRequired,
   toggleAddSpendingForm: PropTypes.func.isRequired,
   addSpending: PropTypes.func.isRequired,

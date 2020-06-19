@@ -8,7 +8,7 @@ import './Item.scss';
 
 const CategoryItem = (props) => {
   const {data, spendings, spendingsData, editHandlers, spendingHandlers} = props;
-  const {id, title, moneySum, isEdit, isSpendingAdd, addSpendingButtonText} = data;
+  const {id, title, moneySum, isEdit, isSpendingAdd, isEmptySpendings, disabledEdit} = data;
 
   return (
     <li className="category-item">
@@ -21,6 +21,7 @@ const CategoryItem = (props) => {
               id={id}
               title={title}
               moneySum={moneySum}
+              disabled={disabledEdit}
               handleSubmit={editHandlers.formSubmit}
               handleCancelClick={editHandlers.toggleForm} />
           </>
@@ -43,7 +44,7 @@ const CategoryItem = (props) => {
           spendingsData={spendingsData} />
       }
       <CategoryAddSpending
-        buttonText={addSpendingButtonText}
+        isEmptySpendings={isEmptySpendings}
         isSpendingAdd={isSpendingAdd}
         toggleAddSpendingForm={spendingHandlers.toggleForm}
         addSpending={spendingHandlers.add}
@@ -62,7 +63,8 @@ CategoryItem.propTypes = {
     moneySum: PropTypes.number.isRequired,
     isEdit: PropTypes.bool.isRequired,
     isSpendingAdd: PropTypes.bool.isRequired,
-    addSpendingButtonText: PropTypes.string.isRequired
+    isEmptySpendings: PropTypes.bool.isRequired,
+    disabledEdit: PropTypes.object
   }).isRequired,
   spendings: PropTypes.array,
   spendingsData: PropTypes.arrayOf(PropTypes.object),

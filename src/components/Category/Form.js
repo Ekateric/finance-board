@@ -5,7 +5,7 @@ import Input from '../../UI/Input';
 
 const CategoryForm = (props) => {
   const {data, handleChange, handleSubmit, handleCancelClick} = props;
-  const {id, title, moneySum, validation} = data;
+  const {id, title, moneySum, disabled, validation} = data;
 
   return (
     <form
@@ -17,6 +17,7 @@ const CategoryForm = (props) => {
         value={title}
         placeholder="Enter title"
         subClass={["w100", "mb"]}
+        disabled={disabled.title}
         handleChange={handleChange} />
       <Input 
         id={id}
@@ -24,6 +25,7 @@ const CategoryForm = (props) => {
         value={moneySum}
         placeholder="Enter money value"
         subClass={["w100", "mb"]}
+        disabled={disabled.moneySum}
         handleChange={handleChange} />
       <Button
         title="Save"
@@ -49,6 +51,7 @@ CategoryForm.propTypes = {
       PropTypes.string,
       PropTypes.number
     ]).isRequired,
+    disabled: PropTypes.object.isRequired,
     validation: PropTypes.object.isRequired
   }).isRequired,
   handleChange: PropTypes.func.isRequired,

@@ -66,7 +66,7 @@ class SpendingFormContainer extends Component {
     this.props.handleSubmit({
       descr: this.state.descr,
       money: Number(this.state.money),
-      isCash: this.props.isCash
+      isCash: this.state.isCash
     });
     this.setState(this.initialState);
   }
