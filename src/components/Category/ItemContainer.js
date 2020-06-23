@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CategoryItem from './Item';
 
+const subClasses = {
+  NEGATIVE: 'category-item_negative'
+};
+
 class CategoryItemContainer extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +48,7 @@ class CategoryItemContainer extends Component {
       id: this.props.id,
       title: this.props.title,
       moneySum: this.props.moneySum,
+      subClass: this.props.moneySum < 0 ? subClasses.NEGATIVE : '',
       isEdit: this.state.isEdit,
       isSpendingAdd: this.state.isSpendingAdd,
       isEmptySpendings: isEmptySpendings,

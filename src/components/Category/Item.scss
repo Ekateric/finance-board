@@ -23,4 +23,8 @@
       font-size: 15px;
     }
   }
+
+  &_negative &__body p {
+    color: $font-error-color;
+  }
 }

@@ -6,7 +6,7 @@ class FormValidation {
   isFilledInput = (value) => {
     return typeof value !== 'undefined'
     && value !== null
-    && value.toString().replace(/^\s+|\s+$/g, ``).length > 0;
+    && value.toString().trim().length > 0;
   }
 
   validateInput = (type, value) => {

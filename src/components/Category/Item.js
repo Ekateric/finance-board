@@ -8,10 +8,10 @@ import './Item.scss';
 
 const CategoryItem = (props) => {
   const {data, spendings, spendingsData, editHandlers, spendingHandlers} = props;
-  const {id, title, moneySum, isEdit, isSpendingAdd, isEmptySpendings, disabledEdit} = data;
+  const {id, title, moneySum, subClass, isEdit, isSpendingAdd, isEmptySpendings, disabledEdit} = data;
 
   return (
-    <li className="category-item">
+    <li className={`category-item ${subClass}`}>
       <h3 className="category-item__title">{title}</h3>
       <div className="category-item__body">
         {isEdit
@@ -61,6 +61,7 @@ CategoryItem.propTypes = {
     ]).isRequired,
     title: PropTypes.string.isRequired,
     moneySum: PropTypes.number.isRequired,
+    subClass: PropTypes.string,
     isEdit: PropTypes.bool.isRequired,
     isSpendingAdd: PropTypes.bool.isRequired,
     isEmptySpendings: PropTypes.bool.isRequired,

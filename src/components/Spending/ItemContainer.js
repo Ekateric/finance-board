@@ -2,20 +2,28 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SpendingItem from './Item';
 
+const subClasses = {
+  NEGATIVE: 'spending-item_negative'
+};
+
 class SpendingItemContainer extends Component {
   constructor(props) {
     super(props);
     
-    this.state = {
+    /*this.state = {
       id: this.props.id,
       descr: this.props.descr,
       money: this.props.money,
       isCash: this.props.isCash
-    };
+    };*/
   }
 
   render() {
-    return <SpendingItem {...this.state} />
+    const data = {
+      ...this.props,
+      subClass: this.props.money < 0 ? subClasses.NEGATIVE : ''
+    };
+    return <SpendingItem {...data} />
   }
 }
 
