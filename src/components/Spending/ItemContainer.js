@@ -18,12 +18,19 @@ class SpendingItemContainer extends Component {
     };*/
   }
 
+  handleDeleteClick = () => {
+    this.props.deleteSpending(this.props.id);
+  }
+
   render() {
     const data = {
       ...this.props,
       subClass: this.props.money < 0 ? subClasses.NEGATIVE : ''
     };
-    return <SpendingItem {...data} />
+    return <SpendingItem 
+      {...data}
+      handleDeleteClick={this.handleDeleteClick}
+       />
   }
 }
 
@@ -34,7 +41,8 @@ SpendingItemContainer.propTypes = {
   ]).isRequired,
   descr: PropTypes.string.isRequired,
   money: PropTypes.number.isRequired,
-  isCash: PropTypes.bool
+  isCash: PropTypes.bool,
+  deleteSpending: PropTypes.func.isRequired
 };
 
 export default SpendingItemContainer;

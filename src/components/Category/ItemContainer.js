@@ -41,6 +41,10 @@ class CategoryItemContainer extends Component {
     this.props.spendingHandlers.add(newSpending, this.props.id);
   }
 
+  deleteSpending = (spendingId) => {
+    this.props.spendingHandlers.delete(spendingId, this.props.id)
+  }
+
   render() {
     const {spendings, spendingsData} = this.props;
     const isEmptySpendings = !(spendings && spendings.length > 0);
@@ -64,7 +68,8 @@ class CategoryItemContainer extends Component {
     };
     const spendingHandlers = {
       toggleForm: this.toggleAddSpendingForm,
-      add: this.addSpending
+      add: this.addSpending,
+      delete: this.deleteSpending
     };
 
     return (

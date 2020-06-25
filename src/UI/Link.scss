@@ -17,6 +17,10 @@
     text-decoration: none;
   }
 
+  &_err {
+    color: $font-error-color;
+  }
+
   &[disabled],
   &_disabled {
     color: $font-disable-color;

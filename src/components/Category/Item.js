@@ -41,7 +41,8 @@ const CategoryItem = (props) => {
       {spendings && spendings.length > 0 &&
         <SpendingList 
           spendings={spendings}
-          spendingsData={spendingsData} />
+          spendingsData={spendingsData}
+          deleteSpending={spendingHandlers.delete} />
       }
       <CategoryAddSpending
         isEmptySpendings={isEmptySpendings}

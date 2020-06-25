@@ -85,14 +85,10 @@ class App extends Component {
   }
 
   deleteCategory = (categoryId) => {
-    let categories = [...this.state.categories];
-
-    categories = categories.filter((category) => {
-      return category.id !== categoryId;
-    });
-
     this.setState({
-      categories: categories
+      categories: [...this.state.categories].filter((category) => {
+        return category.id !== categoryId;
+      })
     });
   }
 
@@ -110,6 +106,25 @@ class App extends Component {
         id: categoryId,
         spendings: categorySpendings
       });
+    });
+  }
+
+  deleteSpending = (spendingId, categoryId) => {
+    const spendings = [...this.state.spendings].filter((spending) => {
+      return spending.id !== spendingId;
+    });
+    const category = this.state.categories.find((item) => item.id === categoryId);
+    const categorySpendings = category.spendings.filter((spendingItemId) => {
+      return spendingItemId !== spendingId;
+    });
+
+    this.setState({
+      spendings: spendings
+    });
+
+    this.updateCategory({
+      id: categoryId,
+      spendings: categorySpendings
     });
   }
 
@@ -132,7 +147,8 @@ class App extends Component {
     };
 
     const spendingHandlers = {
-      add: this.addSpending
+      add: this.addSpending,
+      delete: this.deleteSpending
     };
 
     return (
