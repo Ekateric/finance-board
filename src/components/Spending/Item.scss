@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables';
+
+.spending-item {
+  margin: 0 0 12px;
+
+  &__columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3px;
+  }
+
+  &__descr {
+    max-width: 82%;
+  }
+
+  &__value {
+
+  }
+
+  &_negative &__value {
+    color: $font-error-color;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  &__links {
+    text-align: right;
+  }
+}

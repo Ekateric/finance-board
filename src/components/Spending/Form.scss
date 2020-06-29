@@ -1,0 +1,16 @@
+.spending-form {
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__checkbox {
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  &__checkbox-name {
+    vertical-align: top;
+    line-height: 1;
+  }
+}

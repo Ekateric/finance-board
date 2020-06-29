@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpendingItemContainer from './ItemContainer';
+import './List.scss';
 
 const SpendingList = (props) => {
   const {deleteSpending} = props;

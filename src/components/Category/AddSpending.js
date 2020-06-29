@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SpendingFormContainer from '../Spending/FormContainer';
 import Link from '../../UI/Link';
+import './AddSpending.scss';
 
 const addSpendingText = {
   LIST: '+ spending list',

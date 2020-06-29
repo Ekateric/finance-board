@@ -16,7 +16,7 @@ const CategoryItem = (props) => {
       <div className="category-item__body">
         {isEdit
         ? <>
-            <p>Changing category:</p>
+            <p className="category-item__form-intro">Changing category:</p>
             <CategoryFormContainer 
               id={id}
               title={title}
@@ -26,7 +26,7 @@ const CategoryItem = (props) => {
               handleCancelClick={editHandlers.toggleForm} />
           </>
         : <>
-            <p>{moneySum}</p>
+            <p className="category-item__value">{moneySum}</p>
             <Button
               title="Edit"
               handleClick={editHandlers.toggleForm}

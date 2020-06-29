@@ -17,6 +17,10 @@
     text-decoration: none;
   }
 
+  &_sm {
+    font-size: 13px;
+  }
+
   &_err {
     color: $font-error-color;
   }

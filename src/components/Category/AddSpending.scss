@@ -1,0 +1,13 @@
+@import '../../assets/styles/variables';
+
+.category-add-spending {
+  margin: 0 10% 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid $border-color;
+
+  p {
+    margin: 0 0 10px;
+    font-size: 15px;
+    color: $font-title-color;
+  }
+}

@@ -16,7 +16,7 @@
   }
 
   &__body {
-    margin-right: 10%;
+    margin: 0 10% 15px 0;
 
     p {
       margin: 0 0 10px;
@@ -24,7 +24,11 @@
     }
   }
 
-  &_negative &__body p {
+  &__form-intro {
+    color: $font-title-color;
+  }
+
+  &_negative &__value {
     color: $font-error-color;
   }
 }

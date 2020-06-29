@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
+import './Form.scss';
 
 const SpendingForm = (props) => {
   const {data, handleSubmit, handleChange, handleCancelClick} = props;
@@ -25,14 +26,15 @@ const SpendingForm = (props) => {
         placeholder="Enter money value"
         subClass={["w100", "mb"]}
         handleChange={handleChange} />
-      <label>
+      <label className="spending-form__label">
         <input
+          className="spending-form__checkbox"
           type="checkbox" 
           id={id}
           name="isCash"
           checked={isCash}
           onChange={handleChange} />
-        <span>cash payment</span>  
+        <span className="spending-form__checkbox-name">cash payment</span>  
       </label>  
       <Button
         title="Save"
