@@ -37,14 +37,6 @@ class CategoryItemContainer extends Component {
     });
   }
 
-  addSpending = (newSpending) => {
-    this.props.spendingHandlers.add(newSpending, this.props.id);
-  }
-
-  deleteSpending = (spendingId) => {
-    this.props.spendingHandlers.delete(spendingId, this.props.id)
-  }
-
   render() {
     const {spendings, spendingsData} = this.props;
     const isEmptySpendings = !(spendings && spendings.length > 0);
@@ -63,13 +55,9 @@ class CategoryItemContainer extends Component {
     };
     const editHandlers = {
       toggleForm: this.toggleEditForm,
+      toggleAddSpendingForm: this.toggleAddSpendingForm,
       formSubmit: this.handleSubmit,
       deleteClick: this.handleDeleteClick
-    };
-    const spendingHandlers = {
-      toggleForm: this.toggleAddSpendingForm,
-      add: this.addSpending,
-      delete: this.deleteSpending
     };
 
     return (
@@ -78,7 +66,7 @@ class CategoryItemContainer extends Component {
         spendings={spendings}
         spendingsData={spendingsData}
         editHandlers={editHandlers}
-        spendingHandlers={spendingHandlers}
+        spendingHandlers={this.props.spendingHandlers}
       />
     );
   }

@@ -17,6 +17,10 @@
     text-decoration: none;
   }
 
+  & + & {
+    margin-left: 5px;
+  }
+
   &_sm {
     font-size: 13px;
   }

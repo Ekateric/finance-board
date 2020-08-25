@@ -11,7 +11,7 @@ const addSpendingText = {
 
 class CategoryAddSpending extends Component {
   handleSubmit = (newSpending) => {
-    this.props.addSpending(newSpending);
+    this.props.addSpending(newSpending, this.props.categoryId);
     this.props.toggleAddSpendingForm();
   }
 
@@ -24,8 +24,8 @@ class CategoryAddSpending extends Component {
         {isSpendingAdd
         ? <>
             {isEmptySpendings
-            ? <p>If you add a waste, you`ll not be able to edit the amount</p>
-            : ''
+            ? <p>If you add a waste, you`ll not be able to edit category amount</p>
+            : <p>New spending</p>
             }
             <SpendingFormContainer 
               handleSubmit={this.handleSubmit}
@@ -44,6 +44,10 @@ class CategoryAddSpending extends Component {
 }
 
 CategoryAddSpending.propTypes = {
+  categoryId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   isEmptySpendings: PropTypes.bool.isRequired,
   isSpendingAdd: PropTypes.bool.isRequired,
   toggleAddSpendingForm: PropTypes.func.isRequired,

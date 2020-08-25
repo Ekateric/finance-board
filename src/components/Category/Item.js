@@ -40,14 +40,16 @@ const CategoryItem = (props) => {
       </div>
       {spendings && spendings.length > 0 &&
         <SpendingList 
+          categoryId={id}
           spendings={spendings}
           spendingsData={spendingsData}
-          deleteSpending={spendingHandlers.delete} />
+          spendingHandlers={spendingHandlers} />
       }
       <CategoryAddSpending
+        categoryId={id}
         isEmptySpendings={isEmptySpendings}
         isSpendingAdd={isSpendingAdd}
-        toggleAddSpendingForm={spendingHandlers.toggleForm}
+        toggleAddSpendingForm={editHandlers.toggleAddSpendingForm}
         addSpending={spendingHandlers.add}
         disabled={isEdit} />
     </li>

@@ -92,6 +92,24 @@ class App extends Component {
     });
   }
 
+  updateSpending = (spending, categoryId) => {
+    const spendings = [...this.state.spendings];
+    const spendingIndex = spendings.findIndex((item) => item.id === spending.id);
+  
+    spendings[spendingIndex] = {...spendings[spendingIndex], ...spending};
+
+    this.setState({
+      spendings: spendings
+    }, () =>  {
+      const category = this.state.categories.find((item) => item.id === categoryId);
+  
+      this.updateCategory({
+        id: categoryId,
+        spendings: [...category.spendings]
+      });
+    });
+  }
+
   addSpending = (spending, categoryId) => {
     spending.id = this.state.nextSpendingId;
 
@@ -147,6 +165,7 @@ class App extends Component {
     };
 
     const spendingHandlers = {
+      update: this.updateSpending,
       add: this.addSpending,
       delete: this.deleteSpending
     };

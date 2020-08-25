@@ -1,13 +1,17 @@
 @import '../../assets/styles/variables';
 
 .spending-item {
-  margin: 0 0 12px;
+  margin: 0 0 15px;
 
   &__columns {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 3px;
+
+    p {
+      margin: 0;
+    }
   }
 
   &__descr {
@@ -23,8 +27,13 @@
   }
 
   p {
-    margin: 0;
     font-size: 15px;
+  }
+
+  &__form-intro {
+    margin: 0 0 10px;
+    font-size: 15px;
+    color: $font-title-color;
   }
 
   &__links {
